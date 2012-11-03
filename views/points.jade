@@ -9,10 +9,14 @@ script(type="text/javascript") tagname = "#{name}";
 script(type="text/javascript", src="/scripts/BigTagMap.js")
 
 div(style="position:absolute;background-color:#fff;padding:10px;border-radius:5px;left:140px;")
-  h1 Points
+  h1 Tag Map
+
+  a(href="/tags") All tags
+  br
+  br
 
   if points.length
-    p Here are all points tagged&nbsp;
+    p Here are all streets tagged&nbsp;
     strong #{name}
     ul.points
         for point in points

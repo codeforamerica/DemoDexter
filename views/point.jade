@@ -1,7 +1,10 @@
 h1 #{point.name}
 
 p
-    a(href='/tags') Back to everyone
+	a(href='/tagname/#{point.name}') More #{point.name} tags
+	br
+	br
+    a(href='/tags') Back to all tags
 
 if following.length
     p #{point.name}-#{point.id} is part of #{following.length} streets:
