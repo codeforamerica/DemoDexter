@@ -292,8 +292,9 @@ Street.getNetworkCountById = function(streetId, tagname, callback) {
         if (err) return callback(err);
         var tagids = [ ];
         for(var t=0;t<tags.length;t++){
-          if(tagids.indexOf( tags[t].tag.db.url ) == -1){
-            tagids.push( tags[t].tag.db.url );
+          var streetslug = tags[t].tag._data.data.streets.join(',');
+          if(tagids.indexOf( streetslug ) == -1){
+            tagids.push( streetslug );
           }
         }
         callback(null, { count: tagids.length });
