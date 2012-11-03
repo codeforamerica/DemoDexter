@@ -76,6 +76,9 @@ app.get('/geometry/:tagname', routes.streets.geometry);
 //app.get('/numbers/:streetid', routes.points.getNumbers);
 //app.get('/demolished/:streetid', routes.points.getDemolished);
 
+app.get('/count/:streetname/:tagname', routes.streets.counttags);
+app.get('/networkcount/:streetname/:tagname', routes.streets.networkcount);
+
 app.get('/network/:streetid', routes.points.getNetwork);
 
 //app.get('/addmarket/:name', routes.streets.marketbyname);

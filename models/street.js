@@ -260,6 +260,39 @@ Street.get = function (id, callback) {
     });
 };
 
+Street.getCountById = function(streetId, tagname, callback) {
+    var query = [
+        'START street=node({streetId}), tag=node:nodes(type="point")',
+        'MATCH (tag) -[:partof]-> (street)',
+        'WHERE tag.name = {tagname}',
+        'RETURN tag'
+    ].join('\n');
+    var params = {
+        streetId: streetId * 1,
+        tagname: tagname
+    };
+    db.query(query, params, function(err, tags) {
+        if (err) return callback(err);
+        callback(null, { count: tags.length });
+    });
+};
+
+Street.getNetworkCountById = function(streetId, tagname, callback) {
+    var query = [
+        'START street=node({streetId}), tag=node:nodes(type="point")',
+        'MATCH (tag) -[:partof]-> (neighborstreet) -[:connectsto]-> (street)',
+        'WHERE tag.name = {tagname}',
+        'RETURN tag'
+    ].join('\n');
+    var params = {
+        streetId: streetId * 1,
+        tagname: tagname
+    };
+    db.query(query, params, function(err, tags) {
+        if (err) return callback(err);
+        callback(null, { count: tags.length });
+    });
+};
 
 Street.getIDByName = function(name, callback) {
     var query = [
