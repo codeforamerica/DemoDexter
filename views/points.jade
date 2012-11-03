@@ -8,7 +8,7 @@ link(rel='stylesheet', href='/stylesheets/leaflet.css', type='text/css')
 script(type="text/javascript") tagname = "#{name}";
 script(type="text/javascript", src="/scripts/BigTagMap.js")
 
-div(style="position:absolute;background-color:#fff;padding:10px;border-radius:5px;left:140px;")
+div#panelone(style="position:absolute;background-color:#fff;padding:10px;border-radius:5px;left:140px;")
   h1 Tag Map
 
   a(href="/tags") All tags
@@ -26,7 +26,7 @@ div(style="position:absolute;background-color:#fff;padding:10px;border-radius:5p
   else
     p There are no points tagged #{name}.
 
-div(style="position:absolute;background-color:#fff;padding:10px;border-radius:5px;right:10px;top:65px;")
+div#paneltwo(style="position:absolute;background-color:#fff;padding:10px;border-radius:5px;right:10px;top:65px;")
   form(action='', method='POST')
     p You can pin this tag to more locations.
     p
