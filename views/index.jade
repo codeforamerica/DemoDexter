@@ -15,13 +15,14 @@ p
   a(href="/access/bart") /access/bart
   | &nbsp;to get rules for each street in Carto for TileMill.
 
-iframe(width='800', height='370', frameBorder='0', src='http://a.tiles.mapbox.com/v3/mapmeld.sfbart.html#12/37.7704/-122.4066')
+iframe(width='800', style="margin-left:18px;", height='370', frameBorder='0', src='http://a.tiles.mapbox.com/v3/mapmeld.sfbart.html#12/37.7704/-122.4066')
 
 p(style="width:70%;")
   | You can see the first level of the network generated in the browser at&nbsp;
   a(href="/tagname/bart") /tagname/bart
-  
-  img(src="/images/bartnetwork.png")
+  br
+  br
+  img(src="/images/bartnetwork.png", style="margin-left:18px;")
 
 p(style="width:70%;")
   | I'm also working on a /choice/TAGNAME endpoint, but I don't know the right symbology yet.
@@ -29,14 +30,17 @@ p(style="width:70%;")
 h3 Useful network data
 
 p(style="width:70%;")
-  | I loaded 15 years of housing data from the City of Macon into another instance of DemoDexter. If you look at individual streets, it's hard to tell the worst streets (those with demolitions) from the rest of the pack.
+  | I loaded 15 years of housing data from the City of Macon into another instance of DemoDexter. If you look at individual streets, it's hard to tell the worst streets (those with demolitions) from the rest of the pack. The distribution of these streets is just a dropoff:
+  br
   br
   img(src="/images/DemoFrequency.png")
-  img(src="/images/DemodDemosFrequency.png")
   br
-  | When the search branches out to connecting streets, you get more than just higher numbers. You get a better idea of the neighborhood.
   br
-  img(src="/images/DemoInNetworkFrequency.png", style="margin-left:25px;")
-  img(src="/images/DemosInDemoNetworks.png", style="margin-left:12px;")
+  | When statistics branch out to include connecting streets, you get more than just higher numbers. You get a better idea of a neighborhood. Most housing violations occur in neighborhoods with few demolitions, but houses that get demolished happen in neighborhoods peaking around 10-12 demolished neighbors
+  br
+  br
+  img(src="/images/DemoInNetworkFrequency.png", style="width:48%;")
+  img(src="/images/DemosInDemoNetworks.png", style="width:48%;")
+  br
   br
   | These aren't the greatest diagrams, so I'd be happy to share the data with people with better maths.
