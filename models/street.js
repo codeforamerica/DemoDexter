@@ -268,7 +268,7 @@ Street.getCountById = function(streetId, tagname, callback) {
         'RETURN tag'
     ].join('\n');
     var params = {
-        streetId: streetId,
+        streetId: streetId * 1,
         tagname: tagname
     };
     db.query(query, params, function(err, tags) {
@@ -285,7 +285,7 @@ Street.getNetworkCountById = function(streetId, tagname, callback) {
         'RETURN tag'
     ].join('\n');
     var params = {
-        streetId: streetId,
+        streetId: streetId * 1,
         tagname: tagname
     };
     db.query(query, params, function(err, tags) {
