@@ -127,6 +127,7 @@ exports.access = function(req, res, next) {
 	            }
 	        });
         };
+        res.write('/* Sample MSS Symbology - Access: https://gist.github.com/4006494 */')
         getNextStreet(0);
     });
 };
@@ -156,6 +157,7 @@ exports.choice = function(req, res, next) {
 	            }
 	        });
         };
+        res.write('/* Sample MSS Symbology - Choice: https://gist.github.com/4006491 */')
         getNextStreet(0);
     });
 };
