@@ -264,16 +264,16 @@ Street.getCountById = function(streetId, tagname, callback) {
     var query = [
         'START street=node({streetId}), tag=node:nodes(type="point")',
         'MATCH (tag) -[:partof]-> (street)',
-        'WHERE tag.name = {tagname}',
+        'WHERE tag.name! = {tagname}',
         'RETURN tag'
     ].join('\n');
     var params = {
-        streetId: streetId * 1,
+        streetId: streetId,
         tagname: tagname
     };
     db.query(query, params, function(err, tags) {
         if (err) return callback(err);
-        callback(null, { count: tags.length });
+        callback(null, { count: tags });
     });
 };
 
@@ -281,11 +281,11 @@ Street.getNetworkCountById = function(streetId, tagname, callback) {
     var query = [
         'START street=node({streetId}), tag=node:nodes(type="point")',
         'MATCH (tag) -[:partof]-> (neighborstreet) -[:connectsto]-> (street)',
-        'WHERE tag.name = {tagname}',
+        'WHERE tag.name! = {tagname}',
         'RETURN tag'
     ].join('\n');
     var params = {
-        streetId: streetId * 1,
+        streetId: streetId,
         tagname: tagname
     };
     db.query(query, params, function(err, tags) {
