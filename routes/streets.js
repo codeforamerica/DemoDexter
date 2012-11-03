@@ -80,6 +80,7 @@ exports.byname = function(req, res, next) {
 // GET /count/:streetname/:tagname
 exports.counttags = function(req, res, next) {
   Street.getIDByName(req.params.streetname, function(err, street) {
+    return res.send(street);
     Street.getCountById(street.id, req.params.tagname, function(err, streetdata) {
       if (err) return next(err);
       res.send(streetdata.count);
