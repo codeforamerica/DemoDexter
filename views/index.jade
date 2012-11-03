@@ -2,28 +2,33 @@ h1 DemoDexter
 
 h3 What if cities released data in a network? And let you pin data onto it?
 
-p DemoDexter stores the streets of San Francisco and the connections between them. You use the website to add data, and the API to get maps and network analysis out. 
+p DemoDexter stores the streets of San Francisco and the connections between them.
+p You use the website to add data, and the API to get maps and network analysis out. 
+
+br
+br
 
 h3 Cool network data
 
 p
   | I added a 'bart' tag to all of the streets with BART stations. Then I went to&nbsp;
   a(href="/access/bart") /access/bart
-  | &nbsp;to get rules for each street in Carto. Download&nbsp;
-  a(href="http://metro.teczno.com/") osm2pgsql shapefiles
-  | &nbsp;and put it in
-  a(href="http://mapbox.com/tilemill") TileMill
-  | !
+  | &nbsp;to get rules for each street in Carto for TileMill.
 
-iframe(width='700', height='300', frameBorder='0', src='http://a.tiles.mapbox.com/v3/mapmeld.sfbart.html#13/37.7704/-122.4066')
+iframe(width='800', height='370', frameBorder='0', src='http://a.tiles.mapbox.com/v3/mapmeld.sfbart.html#12/37.7704/-122.4066')
 
-p
-  | You can see the first level of the network at&nbsp;
+p(style="width:70%;")
+  | You can see the first level of the network generated in the browser at&nbsp;
   a(href="/tagname/bart") /tagname/bart
+  
+  img(src="/images/bartnetwork.png")
+
+p(style="width:70%;")
+  | I'm also working on a /choice/TAGNAME endpoint, but I don't know the right symbology yet.
 
 h3 Useful network data
 
-p
+p(style="width:70%;")
   | I loaded 15 years of housing data from the City of Macon into another instance of DemoDexter. If you look at individual streets, it's hard to tell the worst streets (those with demolitions) from the rest of the pack.
   br
   img(src="/images/DemoFrequency.png")
@@ -31,7 +36,7 @@ p
   br
   | When the search branches out to connecting streets, you get more than just higher numbers. You get a better idea of the neighborhood.
   br
-  img(src="/images/DemoInNetworkFrequency.png")
-  img(src="/images/DemosInDemoNetworks.png")
+  img(src="/images/DemoInNetworkFrequency.png", style="margin-left:25px;")
+  img(src="/images/DemosInDemoNetworks.png", style="margin-left:12px;")
   br
   | These aren't the greatest diagrams, so I'd be happy to share the data with people with better maths.
