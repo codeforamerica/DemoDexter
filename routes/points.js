@@ -84,14 +84,7 @@ exports.embedtag = function(req, res, next){
 
 // GET /tagcheck ( newname as parameter )
 exports.tagcheck = function(req, res, next){
-	Point.getTagged(req.body.newname, function(err, points) {
-		if(err) return next(err);
-		// tag has existing members
-		res.render('points', {
-			points: points,
-			name: req.body.newname
-		});
-	});
+	res.redirect('/tagname/' + req.query['newname']);
 };
 
 // POST /points

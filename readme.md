@@ -1,17 +1,41 @@
 # About DemoDexter
 
-<a href="http://houseplot.herokuapp.com">DemoDexter</a> uses a node.js server and a neo4j graph database to build a street network from OpenStreetMap data.
+<a href="http://demodexter.herokuapp.com">DemoDexter</a> uses a node.js server and a neo4j graph database to build a street network from OpenStreetMap data.
 
-Visiting <a href="http://houseplot.herokuapp.com/streets/709">a street's page</a> shows you all named streets which are connected to it.
+Visiting <a href="http://demodexter.herokuapp.com/streets/709">a street's page</a> shows you all named streets which are connected to it.
 
 Neo4j network view:<br/>
 <img src="http://i.imgur.com/DhfvS.png"/>
 
-## Using Neo4j, a graph database
+## Neo4j, a graph database
 
 Collecting statistics on a neighborhood level for every point in a large dataset becomes much simpler using a graph database.
 
-DemoDexter stores houses as Points and links them to Streets. Then Streets are linked to any connecting Streets. This allows us to collect information on a network / neighborhood level.
+DemoDexter stores tagged items (like BART stations and Chipotle restaurants) as Points, and links them to Streets. Then Streets are linked to any connecting Streets. This allows us to collect information on a network / neighborhood level.  It also lets us count links between any street in the city and the nearest BART station or similar target.
+
+
+## San Francisco: an Open Network API and Datastore
+
+<img src="http://i.imgur.com/bsmlG.png"/>
+
+Experimental project. Here's how to get started with the API:
+
+* /tags - add a new tag, see existing tags
+
+* /tagname/YOUR_TAG - see a map and tag additional streets
+
+* /embed/YOUR_TAG - draws a map of tagged streets and connecting streets
+
+* /access/YOUR_TAG - returns Carto which color-codes your streets by access to the nearest tag
+
+* /choice/YOUR_TAG - returns Carto which color-codes your streets by access to the two nearest tags
+
+You can put Carto into TileMill to draw pretty maps.
+
+
+## Macon: Demolition Data
+
+### These features were available only on the Macon instance of DemoDexter.
 
 <a href="http://houseplot.herokuapp.com/demolished/709">/demolished</a> searches for demolished houses on a street:
 
@@ -38,40 +62,6 @@ DemoDexter stores houses as Points and links them to Streets. Then Streets are l
         'WHERE points.action = {status}',
         'RETURN points'
     ].join('\n');
-    
-Number of demolished houses in street networks monitored by code enforcement:
-
-<img src="http://i.imgur.com/hyivE.png"/>
-
-Number of demolished houses in demolished houses' networks:
-
-<img src="http://i.imgur.com/0pO60.png"/>
-
-This shows that at-risk neighborhoods have a distinctly different distribution of demolished houses.
-
-<a href="http://houseplot.herokuapp.com/marketdistance/100">/marketdistance/:id</a> returns the shortest path from the given street to a supermarket
-
-    var params = {
-        streetId: this.id,
-    };
-
-    var query = [
-        'START street=node({streetId}), other=node:nodes(type="street")',
-        'MATCH p = shortestPath( (street) -[*..15]-> (other) )',
-        'WHERE other.hasfoodmarket! = "true"',	// skip roads without a hasfoodmarket property
-        'RETURN p'
-    ].join('\n');
-
-    db.query(query, params, function (err, results) {
-        if (err) return callback(err);
-        
-        results.sort(function(a, b){
-          return a.p.length - b.p.length;
-        });
-    });
-
-A MapBox map representing network distance from supermarkets:<br/>
-<img src="http://i.imgur.com/D72vK.png"/>
 
 ## Building the street network
 

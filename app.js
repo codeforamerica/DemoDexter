@@ -67,7 +67,7 @@ app.post('/tags/:id/unfollow', routes.points.unfollow);
 app.get('/tagname/:tagname', routes.points.tagname);
 app.get('/embed/:tagname', routes.points.embedtag);
 app.post('/tagname/:tagname', routes.points.create);
-app.post('/tagcheck', routes.points.create);
+app.get('/tagcheck', routes.points.tagcheck);
 
 app.get('/access/:tagname', routes.streets.access);
 app.get('/choice/:tagname', routes.streets.choice);
