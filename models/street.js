@@ -290,7 +290,7 @@ Street.getNetworkCountById = function(streetId, tagname, callback) {
     };
     db.query(query, params, function(err, tags) {
         if (err) return callback(err);
-        callback(null, { count: tags.length });
+        callback(null, { routes: tags });
     });
 };
 
