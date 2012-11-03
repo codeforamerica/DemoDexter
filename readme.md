@@ -93,20 +93,6 @@ You can put Carto into TileMill to draw pretty maps.
 <li>Once you have finished adding streets, make a commit to remove the script and OSM file</li>
 </ul>
 
-
-## Adding houses
-<ul>
-<li>Put your houses or other point data into a CSV file</li>
-<li>Run <a href="https://gist.github.com/3454788">HouseNet.py</a> or a similar script to import each case as a Point, and link it to a Street</li>
-<li>Depending on stats you would like to collect, you may need to write some code to collect network stats. <a href="https://gist.github.com/3473604">NetworkStats.py</a> is a sample script.</li>
-</ul>
-
-## Adding supermarkets
-<ul>
-<li>Call /addmarket/streetname using the shortened name for each street with a supermarket. For example, /addmarket/mainst</li>
-<li>Call /marketdistance/id using the numeric id of a street to return carto of that road name and supermarket distance</li>
-</ul>
-
 # About Node-Neo4j Template
 
 <a href="https://github.com/aseemk/node-neo4j-template">Node-Neo4j Template from aseemk</a> simplifies the use of [Neo4j][] from Node.js. It uses the
