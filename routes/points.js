@@ -70,6 +70,18 @@ exports.tagname = function(req, res, next){
 	});
 };
 
+// GET /embed/:tagname
+exports.embedtag = function(req, res, next){
+	Point.getTagged(req.params.tagname, function(err, points) {
+		if(err) return next(err);
+		// tag has existing members
+		res.render('embed', {
+			points: points,
+			name: req.params.tagname
+		});
+	});
+};
+
 // GET /tagcheck ( newname as parameter )
 exports.tagcheck = function(req, res, next){
 	Point.getTagged(req.body.newname, function(err, points) {

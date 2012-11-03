@@ -1,10 +1,5 @@
 // BigTagMap.js
 
-if( (window.location + "").indexOf("embed") > -1){
-  $("#panelone").css({ display: "none" });
-  $("#paneltwo").css({ display: "none" });  
-}
-
 // put a toner map in the background
 var map = new L.Map('map');
 map.attributionControl.setPrefix('');
