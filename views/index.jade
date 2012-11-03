@@ -1,19 +1,37 @@
-h1= title
+h1 DemoDexter
+
+h3 What if cities released data in a network? And let you pin data onto it?
+
+p DemoDexter stores the streets of San Francisco and the connections between them. You use the website to add data, and the API to get maps and network analysis out. 
+
+h3 Cool network data
 
 p
-    | This is a template app showing the use of&nbsp;
-    a(href='http://www.neo4j.org/', target='_blank') Neo4j
-    |  from Node.js. It uses the&nbsp;
-    a(href='https://github.com/thingdom/node-neo4j', target='_blank') node-neo4j
-    |  library, available on npm as&nbsp;
-    code neo4j
-    .
+  | I added a 'bart' tag to all of the streets with BART stations. Then I went to&nbsp;
+  a(href="/access/bart") /access/bart
+  | &nbsp;to get rules for each street in Carto. Download&nbsp;
+  a(href="http://metro.teczno.com/") osm2pgsql shapefiles
+  | &nbsp;and put it in
+  a(href="http://mapbox.com/tilemill") TileMill
+  | !
 
-p.
-    This app is a simple social network manager: it lets you add and remove
-    users and "follows" relationships between them.
+iframe(width='700', height='300', frameBorder='0', src='http://a.tiles.mapbox.com/v3/mapmeld.sfbart.html#13/37.7704/-122.4066')
 
 p
-    strong
-        | Get started:&nbsp;
-        a(href='/users') View all users
+  | You can see the first level of the network at&nbsp;
+  a(href="/tagname/bart") /tagname/bart
+
+h3 Useful network data
+
+p
+  | I loaded 15 years of housing data from the City of Macon into another instance of DemoDexter. If you look at individual streets, it's hard to tell the worst streets (those with demolitions) from the rest of the pack.
+  br
+  img(src="/images/DemoFrequency.png")
+  img(src="/images/DemodDemosFrequency.png")
+  br
+  | When the search branches out to connecting streets, you get more than just higher numbers. You get a better idea of the neighborhood.
+  br
+  img(src="/images/DemoInNetworkFrequency.png")
+  img(src="/images/DemosInDemoNetworks.png")
+  br
+  | These aren't the greatest diagrams, so I'd be happy to share the data with people with better maths.
