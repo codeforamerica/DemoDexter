@@ -24,7 +24,7 @@ $.getJSON("/geometry/" + tagname, function(ways){
 
   // color in streets connected to tagged streets
   $.getJSON("/geometry/" + tagname + "?branched=1", function(ways){
-    for(var w=0;w<ways.length;w++){
+    for(var w=0;w<ways.length && w<15;w++){
       // don't map repeats
       if(taggedStreets.indexOf( ways[w] ) > -1){
         continue;
