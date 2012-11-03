@@ -273,7 +273,7 @@ Street.getCountById = function(streetId, tagname, callback) {
     };
     db.query(query, params, function(err, tags) {
         if (err) return callback(err);
-        callback(null, { count: tags });
+        callback(null, { count: tags.length });
     });
 };
 

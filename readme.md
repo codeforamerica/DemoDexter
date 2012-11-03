@@ -26,6 +26,10 @@ Experimental project. Here's how to get started with the API:
 
 * /embed/YOUR_TAG - draws a map of tagged streets and connecting streets
 
+* /count/STREETNAME/YOUR_TAG - counts tags on the street
+
+* /networkcount/STREETNAME/YOUR_TAG - counts tags on connecting streets (and not including the street itself)
+
 * /access/YOUR_TAG - returns Carto which color-codes your streets by access to the nearest tag
 
 * /choice/YOUR_TAG - returns Carto which color-codes your streets by access to the two nearest tags
