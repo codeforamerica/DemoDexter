@@ -1,0 +1,23 @@
+h1 #{point.name}
+
+p
+    a(href='/tags') Back to everyone
+
+if following.length
+    p #{point.name}-#{point.id} is part of #{following.length} streets:
+    // TODO should say 'point' if only one! ;)
+    ul.points
+        for other in following
+            li.point
+                form(action='/streets/#{point.id}/unfollow', method='POST')
+                    a(href='/streets/#{other.id}') #{other.name}
+                    input(type='hidden', name='point[id]', value='#{other.id}')
+                    input(type='submit', class='unfollow', value='x')
+                    
+else
+    p #{point.name} isn't part of any streets.
+
+form(action='/tags/#{point.id}', method='POST', onsubmit='return confirm("Are you sure?");')
+    p Please don't delete this point:
+    input(type='hidden', name='_method', value='DELETE')
+    input(type='submit', value='Delete Point')

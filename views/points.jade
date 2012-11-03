@@ -1,0 +1,35 @@
+script(type="text/javascript", src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js")
+
+div#map(style="width:100%;height:100%;margin:0;padding:0;position:absolute;left:0;top:0;")
+script(type="text/javascript", src="/scripts/leaflet.js")
+link(rel='stylesheet', href='/stylesheets/leaflet.css', type='text/css')
+// [if lte IE 8]
+  link(rel='stylesheet', href='/stylesheets/leaflet.ie.css', type='text/css')
+script(type="text/javascript") tagname = "#{name}";
+script(type="text/javascript", src="/scripts/BigTagMap.js")
+
+div(style="position:absolute;background-color:#fff;padding:10px;border-radius:5px;left:140px;")
+  h1 Points
+
+  if points.length
+    p Here are all points tagged&nbsp;
+    strong #{name}
+    ul.points
+        for point in points
+            li.point
+                a(href='/tags/#{point.point.id}')
+                  span #{point.point.id}
+  else
+    p There are no points tagged #{name}.
+
+div(style="position:absolute;background-color:#fff;padding:10px;border-radius:5px;right:10px;top:65px;")
+  form(action='', method='POST')
+    p You can pin this tag to more locations.
+    p
+      span For one street, add:
+      i Main Street
+      span &nbsp;or on multiple streets:&nbsp;
+      i 2nd Street, Easy Street
+    input(type='hidden', name='tagname', value='#{name}')
+    input(type='text', name='streets', value='')
+    input(type='submit', value='Pin')

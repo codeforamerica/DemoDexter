@@ -1,0 +1,25 @@
+h1 Tags
+
+h3 Browse existing tags, or add your own:
+
+p
+  strong Reserved tags:
+  ul.points
+    li
+      a(href="/tagname/bart") BART Stations
+    li
+      a(href="/tagname/chipotle") Chipotles
+
+p
+  strong Other tags:
+  ul.points
+    for point in points
+      li.point
+        a(href='/tagname/#{point.name}')
+          span #{point.name}
+
+p
+  strong Creating a tag type:
+  form(action="/tagcheck", method="POST")
+    input(type="text", name="newname")
+    input(type="submit", value="Create Tag")

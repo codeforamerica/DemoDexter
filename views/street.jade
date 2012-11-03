@@ -1,0 +1,46 @@
+h1 #{street.name}
+
+p
+    a(href='/streets') Back to everyone
+
+p(style="width:300px;padding:15px;border:1px solid #000;")
+    a(href="/demolished/#{street.id}") Demolitions on Street
+    br
+    br
+    a(href="/network/#{street.id}") Demolitions on Connecting Streets
+
+if following.length
+    p #{street.name} is connected to #{following.length} streets:
+    // TODO should say 'street' if only one! ;)
+    ul.streets
+        for other in following
+            li.street
+                form(action='/streets/#{street.id}/unfollow', method='POST')
+                    a(href='/streets/#{other.id}') #{other.name}
+                    input(type='hidden', name='street[id]', value='#{other.id}')
+                    input(type='submit', class='unfollow', value='x')
+    
+else
+    p #{street.name} isn't connected to any streets.
+
+if others.length
+    form(action='/streets/#{street.id}/follow', method='POST')
+        p Connect #{street.name} to another street:
+        label
+            select(name='street[id]', required)
+                option(value='')
+                for street in others
+                    option(value='#{street.id}') #{street.name}
+        input(type='submit', value='Connect')
+else
+    p There's no street for #{street.name} to connect to!
+
+form(action='/streets/#{street.id}', method='POST')
+    p Edit this street:
+    input(type='text', name='name', placeholder='#{street.name}', required)
+    input(type='submit', value='Update')
+
+form(action='/streets/#{street.id}', method='POST', onsubmit='return confirm("Are you sure?");')
+    p Please don't delete this street.
+    input(type='hidden', name='_method', value='DELETE')
+    input(type='submit', value='Delete Street')

@@ -1,0 +1,16 @@
+h1 Tags
+
+h3 Browse existing tags, or add your own:
+
+p
+  strong Existing tags:
+  ul
+    li
+      a(href="/tagname/bart") BART Stations
+      a(href="/tagname/chipotle") Chipotles
+
+p
+  strong Creating a tag type:
+  form(action="/tagcheck", method="POST")
+    input(type="text", name="newname")
+    input(type="submit", value="Create Tag")
