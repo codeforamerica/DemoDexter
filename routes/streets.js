@@ -124,6 +124,10 @@ exports.addosmid = function(req, res, next) {
 
 // GET /access/:tagname
 exports.access = function(req, res, next) {
+    var closedConnection = false;
+    req.on('close', function(){
+      closedConnection = true;
+    });
     Street.getAll(function (err, streets) {
         if (err) return next(err);
         var getNextStreet = function(index){
@@ -139,11 +143,11 @@ exports.access = function(req, res, next) {
 	            }
 
 	            index++;
-	            if(index < streets.length){
+	            if(index < streets.length && !closedConnection){
 	            	getNextStreet(index);
 	            }
 	            else{
-	            	return;
+	            	return res.end();
 	            }
 	        });
         };
@@ -154,6 +158,10 @@ exports.access = function(req, res, next) {
 
 // GET /choice/:tagname
 exports.choice = function(req, res, next) {
+    var closedConnection = false;
+    req.on('close', function(){
+      closedConnection = true;
+    });
     Street.getAll(function (err, streets) {
         if (err) return next(err);
         var getNextStreet = function(index){
@@ -169,11 +177,11 @@ exports.choice = function(req, res, next) {
 	            }
 
 	            index++;
-	            if(index < streets.length){
+	            if(index < streets.length && !closedConnection){
 	            	getNextStreet(index);
 	            }
 	            else{
-	            	return;
+	            	return res.end();
 	            }
 	        });
         };
