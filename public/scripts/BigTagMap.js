@@ -24,16 +24,25 @@ $.getJSON("/geometry/" + tagname, function(ways){
 
   // color in streets connected to tagged streets
   $.getJSON("/geometry/" + tagname + "?branched=1", function(ways){
-    for(var w=0;w<ways.length && w<15;w++){
-      // don't map repeats
-      if(taggedStreets.indexOf( ways[w] ) > -1){
-        continue;
+    var loadStreet = function(w){
+      // add this new street
+      if(taggedStreets.indexOf( ways[w] ) == -1){
+        taggedStreets.push( ways[w] );
+        $.getJSON("/osmbyid/" + ways[w], function(neighbor){
+          mapWay( neighbor.vertices, "#00f" );
+        });
       }
-      $.getJSON("/osmbyid/" + ways[w], function(neighbor){
-        mapWay( neighbor.vertices, "#00f" );
-      });
-      taggedStreets.push( ways[w] );
-    }
+      // use recursion for next street in 0.5 seconds
+      w++;
+      if(w < ways.length){
+        setTimeout(function(){
+          loadStreet(w);
+        }, 500);
+      }
+    };
+    if(ways.length > 0){
+      loadStreet(0);
+    } 
   });
 });
 
