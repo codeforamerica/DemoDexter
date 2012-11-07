@@ -11,17 +11,17 @@ exports.list = function (req, res, next) {
     Point.getAll(function (err, points) {
         if (err) return next(err);
         var tagnames = [ ];
-        return res.send(points);
+        //return res.send(points);
         for(var p=points.length-1;p>=0;p--){
-        	/*if( !points[p]._data.data.name || !points[p]._data.data.name.length || reservedTags.indexOf( points[p]._data.data.name.toLowerCase() ) > -1 ){
+        	if( !points[p]._node._data.data.name || !points[p]._node._data.data.name.length || reservedTags.indexOf( points[p]._node._data.data.name.toLowerCase() ) > -1 ){
         		points.splice(p,1);
         		continue;
-        	}*/
-        	/*if(tagnames.indexOf( points[p]._data.data.name ) > -1){
+        	}
+        	if(tagnames.indexOf( points[p]._node._data.data.name ) > -1){
         		points.splice(p,1);
         		continue;
-        	}*/
-        	tagnames.push( { name: points[p].points._data.data.name } );
+        	}
+        	tagnames.push( { name: points[p]._node._data.data.name } );
         }
         return res.send(tagnames);
         res.render('newtag', {
