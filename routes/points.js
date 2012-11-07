@@ -11,7 +11,7 @@ exports.list = function (req, res, next) {
     Point.getAll(function (err, points) {
         if (err) return next(err);
         var tagnames = [ ];
-        //return res.send(points);
+        return res.send(points);
         for(var p=points.length-1;p>=0;p--){
         	/*if( !points[p]._data.data.name || !points[p]._data.data.name.length || reservedTags.indexOf( points[p]._data.data.name.toLowerCase() ) > -1 ){
         		points.splice(p,1);
