@@ -17,10 +17,10 @@ exports.list = function (req, res, next) {
         		points.splice(p,1);
         		continue;
         	}*/
-        	if(tagnames.indexOf( points[p]._data.data.name ) > -1){
+        	/*if(tagnames.indexOf( points[p]._data.data.name ) > -1){
         		points.splice(p,1);
         		continue;
-        	}
+        	}*/
         	tagnames.push( { name: points[p]._data.data.name } );
         }
         return res.send(tagnames);
