@@ -23,6 +23,7 @@ exports.list = function (req, res, next) {
         	}
         	tagnames.push( { name: points[p]._data.data.name } );
         }
+        return res.send(tagnames);
         res.render('newtag', {
             points: tagnames
         });
