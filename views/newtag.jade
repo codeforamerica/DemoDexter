@@ -15,8 +15,7 @@ p
   ul.points
     for point in points
       li.point
-        a(href='/tagname/#{point.name}')
-          span #{point.name}
+        a(href='/tagname/#{point}') #{point}
 
 p
   strong Creating a tag type:

@@ -21,9 +21,9 @@ exports.list = function (req, res, next) {
         		points.splice(p,1);
         		continue;
         	}
-        	tagnames.push( { name: points[p]._node._data.data.name } );
+        	tagnames.push( points[p]._node._data.data.name );
         }
-        return res.send(tagnames);
+        //return res.send(tagnames);
         res.render('newtag', {
             points: tagnames
         });
