@@ -37,6 +37,13 @@ Experimental project. Here's how to get started with the API:
 You can put Carto into TileMill to draw pretty maps.
 
 
+## Oakland: adding a city
+<a href="http://oaklandexter.herokuapp.com">Oaklandexter</a> is an Oakland / Alameda County version of DemoDexter.
+
+With the right Python script, you can import streets from any .OSM file. This is a library access map produced on Oaklandexter.
+
+<img src="http://i.imgur.com/qSK1Z.png"/>
+
 ## Macon: Demolition Data
 
 ### These features were available only on the Macon instance of DemoDexter.
